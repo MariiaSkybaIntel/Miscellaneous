@@ -1,0 +1,65 @@
+/**A method that when given an array of integers and a target number,
+returns an array of locations of the two numbers that add up to that
+target and prints them on screen. If there are no such numbers in the
+array - a message is printed an null is returned. It is assumed that
+the same number cannot be summed with itself*/
+
+public class TwoSum
+{
+   public static void main(String args[])
+	  {
+      int ar[] = new int[4]; //initialise an integer array of size 4
+      //populate the array
+      ar[0]=4; 
+      ar[1]=1;
+      ar[2]=3;
+      ar[3]=8;
+		  twoSum(ar, 5); //call the twoSum method
+	  }	
+	    //Method
+      public static int[] twoSum(int[] nums, int target) 
+	    {
+	        if(nums.length==0) //if the array is empty return null
+	        {
+	            return null;
+	        }
+          
+	        int sum = 0; 
+	        int first=0; 
+	        int last=0;
+	        boolean flag=false; 
+          
+	          for(int i=0;i<nums.length;i++) //start with the first number
+	          {
+	        	  for(int j=i+1;j<nums.length;j++) 
+	        	  {
+	        		  sum=nums[i]+nums[j]; //add it to every consecutive number
+	              
+			              if(sum==target) //if found the two numbers
+			              {
+			            	  flag=true; //raise the flag
+			            	  first=i; //store the location of the first number
+			            	  last=j;  //store the location of the second number
+			            	  break;	 //exit the loop	            	  
+			              }
+	        	  }
+	          }
+	        
+	        if(flag==true) //if found the two numbers
+	        {
+		        int ar[] = new int[2]; //create a new integer array of size 2
+		        ar[0]=first; //store the location of the first number
+		        ar[1]=last;  //store the location of the second number
+		        System.out.println(ar[0]); //print the locations
+		        System.out.println(ar[1]);
+		        return ar; //return array
+	        }
+          
+          //if there are no such numbers
+	        else 
+	        {
+	        	System.out.println("No such numbers exist in the array");
+	        	return null;
+	        }
+     }
+}
