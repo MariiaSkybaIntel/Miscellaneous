@@ -1,0 +1,33 @@
+//Check if a String is a palindrome using recursive method that returns true or false
+
+import java.util.Scanner; //import Scanner
+class Palindrome 
+{
+    public static void main (String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        //int num = sc.nextInt(); //uncomment these two lines if you want to read in an int and then convert it to a String
+        //String s = ""+num;
+        String s = sc.nextLine(); //read in a String
+        System.out.println(isPalindrome(num)); //print the answer
+        sc.close();
+    }
+    
+    public static boolean isPalindrome(String s)
+    {
+        if(s.length()==1) //base case
+        {
+            return true;
+        }
+        else
+        {
+            if(s.charAt(0)==s.charAt(s.length()-1))
+            {
+                /*if the first and the last char in a String are the same call the recursive 
+                /*method again on a substring without those two characters*/
+                return isPalindrome(s.substring(1,s.length()-1)); 
+            }
+        } 
+        return false;
+    }
+}
