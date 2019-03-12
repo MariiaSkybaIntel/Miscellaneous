@@ -1,0 +1,42 @@
+/*A program that checks if a number is a palindrome
+/*It reverses the number and if it's the same as the original
+/*It returns true. If a number differs or is negative - it can never
+/*be a palindrome and the program returns false
+
+import java.util.Scanner;
+public class PalindromeNumber 
+{
+    public static void main (String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt(); //read in an int
+        System.out.println(isPalindrome(num)); //call the method
+        sc.close(); //close the Scanner
+    }
+    
+    public static boolean isPalindrome(int num)
+    {
+    	if(num<=9&&num>=0) //if num is one digit
+        {
+            return true; //it's a palindrome
+        }
+        else
+        {	if(num<0) //if a number is negative - it's never a palindrome
+            return false;
+         
+        	int copy = num; //store the original value of num
+        	int reversed = 0; 
+            while (copy > 0) //while copy of num is positive
+            { 
+            	reversed = reversed*10 + copy%10; //reverse the digits
+                copy = copy/10; //get rid of the last digit
+            }           
+            if(num==reversed) //if num and reversed number are the same
+            {
+            	return true; //it's a palindrome
+            }      
+        } 
+        return false; //else: it's not a palindrome
+    }
+    
+}
