@@ -1,0 +1,26 @@
+import java.util.Scanner; //enable keyboard input reading
+public class DtoBConverter
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in); //create an instance of the Scanner class
+		System.out.println("Enter your decimal number: "); //prompt the user about the expected input
+		int decimal = sc.nextInt(); //read in the decimal number
+		String binary = new String(""); //create a String to save a binary equivalent of the decimal number
+		
+		while(decimal <= 0) //use a while loop to check if the decimal number is > 0
+		{
+			System.out.println("Your number must be > 0");
+			System.out.println("Enter your decimal number: ");//prompt the user about the expected input
+			decimal = sc.nextInt(); //read in the positive decimal number
+		}
+		
+		while(decimal > 0) //use a while loop to go through every digit in the decimal from right to left
+		{
+			binary = (decimal%2)+binary; //get the remainder after division by two and store in in the String
+			decimal=decimal/2; //divide decimal value by two
+		}
+		System.out.println("The number in binary is: " + binary); //print the binary value on screen
+		sc.close(); //close the Scanner
+	}
+}
