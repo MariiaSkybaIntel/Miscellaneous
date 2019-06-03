@@ -1,0 +1,19 @@
+import java.util.Scanner;  //enable keyboard input reading
+public class DtoOConverter
+{
+	public static void main(String args[])
+	{
+      Scanner sc = new Scanner(System.in); //create an instance of the Scanner class
+      System.out.println("Enter the decimal number: "); //prompt the user about the expected input
+      int decimal = sc.nextInt(); //read in the decimal number
+      String octal = new String("");//create a String to save an octal equivalent of the decimal number
+
+        while(decimal!=0) //use a while loop to go through every digit in the decimal from right to left
+          {	
+            octal = (decimal%8)+octal; //get the remainder after division by eight and store in in the String
+            decimal = decimal/8; //divide decimal number by eight
+          }
+      System.out.println("The number in octal is: " + octal); //print the octal number on screen
+      sc.close(); //close the Scanner
+	}
+}
