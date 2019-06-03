@@ -1,0 +1,22 @@
+import java.util.Scanner; //enable keyboard input reading
+public class BtoDConverter
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in); //create an instance of the Scanner class
+        System.out.println("Enter your binary number: "); //prompt the user about the expected input
+        int binary = sc.nextInt(); //read in the binary number
+        int decimal = 0; //initialise a variable to store a decimal number
+        int power = 0; //initialise a variable to store power value, set it equal to 0
+
+            while(binary != 0) //use a while loop to go through every digit in the binary number from right to left
+             {
+                  decimal += (binary%10)*Math.pow(2, power); /*extract the rightmost digit in the binary number, multiply it by (2^n), 
+                  where n equals the position of that digit*/
+                  binary = (binary/10); //get rid of the rightmost digit in the binary number
+                  power++; //increment the power by one			
+             }
+        System.out.println("The number in decimal is: " + decimal); //print the decimal number to the screen
+        sc.close(); //close the Scanner
+    }
+}
