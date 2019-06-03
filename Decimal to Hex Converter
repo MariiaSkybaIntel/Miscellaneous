@@ -1,0 +1,24 @@
+import java.util.Scanner;  //enable keyboard input reading
+public class DtoHConverter
+{
+	public static void main(String args[])
+	{
+      Scanner sc = new Scanner(System.in); //create an instance of the scanner
+      String hexNumbers = new String("0123456789ABCDEF"); //create a string to contain hexadecimal values
+      System.out.println("Enter your decimal number: "); //prompt the user with the expected output
+      int decimal = sc.nextInt(); //read in the decimal number
+      int position = 0; //create an integer variable to find a corresponding value in hexNumbers      
+      String hex = new String(""); //create a string to store hexadecimal equivalent
+      
+        while(decimal>0) 
+          {
+            position = (decimal%16); //calculate the remainder after dividing the decimal number by 16
+            hex = hexNumbers.charAt(position)+hex; /* save the corresponding hexNumbers character in hex,
+            concatenate with the value already stored in hex */
+            decimal = decimal/16; //divide decimal number by 16
+          }
+          
+       System.out.println("Number in hexadecimal: "+hex); //print the hexadecimal equivalent onto the screen
+	}
+  
+}
