@@ -1,0 +1,21 @@
+import java.util.Scanner; //enable keyboard input reading
+public class HtoDConverter
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in); //create an instance of the scanner
+		String hexNumbers = new String("0123456789ABCDEF"); //create a string to store all the hexadecimal values
+		int decimal = 0; //initialise a variable to store the converted number
+		System.out.println("Enter your hexadecimal number: "); //prompt the user with an expected input
+		String hex = new String(sc.nextLine()); //read in the hexadecimal number
+			
+		  for(int i=0;i<hex.length();i++) //use 'for loop' to go through every character in the hex string
+        {
+          char c = hex.charAt(i); //store the character at i in variable c
+          int d = hexNumbers.indexOf(c); //find the index of character c in the hexNumbers string
+          decimal = 16*decimal+d; //multiply value stored in decimal by 16 and add the index value of character c 
+        }
+    
+		System.out.println("Number in decimal: " + decimal); //print the decimal number onto the screen
+	}  
+}
