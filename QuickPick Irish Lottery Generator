@@ -1,0 +1,60 @@
+/*This is a simple Java Program that generates a set of 6 psedo random numbers in the range 1-47.
+* It is analogous to the Irish Lotto quick pick generator. However, unlike the Irish Lotto one,
+* it lets you see the numbers that have been generated.
+* It uses Linked List and currently generates 10 such combinations.
+* Increase/decrease the number in the first for loop to change the number of combinations generated.
+*/
+
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Random;
+
+public class Lotto 
+{
+	public static void main(String args[])
+	{
+		quickPlay();		
+	}
+	
+	public static void quickPlay()
+	{
+		Random rd = new Random(); //create a new Random Object
+		LinkedList<Integer> myList = new LinkedList<Integer>(); //a linked list to store numbers 1-47
+		int numbers[] = new int[6]; //an array to store 6 random numbers
+		
+		for(int i=0;i<10;i++) //generate 10 combinations of 6 numbers in the range of 1-47
+		{
+			for(int j=1;j<48;j++)  
+			{
+				myList.add((int)j); //add numbers 1-47 to a linked list
+			}			
+			for(int k=0;k<6;k++)
+			{				
+				int item = rd.nextInt(myList.size()+1); //generate a pseudo random number in the range of 0-47
+				while(item==0||myList.indexOf(item)<0) //while the number generated=0 or if it has been already removed from the list
+				{
+					item = rd.nextInt(myList.size()+1); //generate a different number
+				}
+				numbers[k]=item; //store the number in an array of size 6
+				int index=myList.indexOf(item); //get the index of the number
+				myList.remove(index); //remove the number from the list			
+			}
+			printArray(numbers); //print a set of 6 numbers generated using quick pick
+			System.out.println("***");
+			myList.clear();//remove all remaining numbers from the list
+		}
+	}
+	
+  //method for printing an integer array
+	public static void printArray(int ar[])
+	{
+		Arrays.sort(ar);
+		System.out.print("[");
+		for(int i=0;i<ar.length-1;i++)
+		{
+			System.out.print(ar[i]+",");
+		}
+		System.out.print(ar[ar.length-1]+"]");
+		System.out.println();
+	}	
+}
