@@ -1,0 +1,64 @@
+//Write a program that checks if a string is a palindrome.
+//In a set of strings s1="abbba" s2="dad s3="Dad" s1, s2 are palindromes, but s3 is not.
+
+import java.util.*;
+import java.io.*;
+
+public class PalindromeUsingStack 
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		String word = sc.nextLine();
+		isPalindrome(word);
+	}
+	
+	public static void isPalindrome(String word)
+	{
+		Stack <String> stack= new Stack<String>(); //create a stack
+		
+		for(int i=0;i<word.length()/2;i++) //push half of characters onto the stack
+		{
+			stack.push(word.substring(i,i+1));
+		}
+		
+		if(word.length()%2==0) //if the word length was even
+		{			
+			for(int i=word.length()/2;i<word.length();i++)
+			{
+				String nextChar=word.substring(i, i+1);
+				if(stack.peek().matches(nextChar))
+				{
+					stack.pop();
+				}
+				else
+				{
+					break;
+				}				
+			}
+			if(stack.isEmpty()) //there should be no items on the stack
+				System.out.println("This string is a palindrome");
+			else
+				System.out.println("This string is not a palindrome");
+		}
+		else //if the word length was odd
+		{
+			for(int i=word.length()/2+1;i<word.length();i++)
+			{
+				String nextChar=word.substring(i, i+1);
+				if(stack.peek().matches(nextChar))
+				{
+					stack.pop();
+				}
+				else
+				{
+					break;
+				}				
+			}
+			if(stack.isEmpty())
+				System.out.println("This string is a palindrome");
+			else
+				System.out.println("This string is not a palindrome");
+		}		
+	}
+}
