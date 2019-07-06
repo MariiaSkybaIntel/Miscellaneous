@@ -1,0 +1,41 @@
+//Given an array of integers, return indices of the two numbers such that they add up to a specific target
+//It is assumed that each input will have at most one solution
+//It is assumed that the same element cannot be used twice
+//The time complexity of this solution is O(n)
+package warmup;
+import java.util.*;
+
+public class TwoSumImproved
+{
+	public static void main(String args[])
+	{
+		int ar[] = {2,7,11,15};
+		System.out.println(Arrays.toString(twoSum(ar,26)));
+	}	
+	
+	public static int[] twoSum(int[]ar, int target)
+	{
+		int result[] = null; //set the array of indices to null
+		ArrayList<Integer> seen = new ArrayList<Integer>(); //initialize an ArrayList of integers
+		
+		for(int i=0;i<ar.length;i++) //convert array to ArrayList
+		{
+			seen.add(ar[i]);
+		}
+		
+		for(int i=0;i<ar.length;i++)
+		{
+			if(seen.contains(target-ar[i])) //if there is a suitable pair of numbers
+			{
+				result = new int[2]; //set the size of the indices array to 2
+				result[0]=i; //store the first index
+				result[1]=(seen.indexOf(target-ar[i])); //store the second index
+				if(result[0]==result[1]) //if the same number was added with itself
+				{
+					result=null; //reset the indeces array to null
+				}
+			}
+		}
+		return result;
+	}
+}
